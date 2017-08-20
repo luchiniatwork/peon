@@ -44,6 +44,7 @@
                            :optimizations :advanced
                            :pretty-print false}}]}
 
-  :doo {:build "test"}
+  :doo {:build "test"
+        :debug true}
   
   :profiles {:uberjar {:aot :all}})

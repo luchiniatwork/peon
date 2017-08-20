@@ -5,10 +5,13 @@
   (dispatcher [this]))
 
 (defn- get-prop
-  "PRIVATE: Do not use"
+  "Copied from om next because it's private there."
   [c k]
-  #?(:clj  (get (:props c) k)
-     :cljs (gobj/get (.-props c) k)))
+  (gobj/get (.-props c) k))
+
+(defn- print-warning
+  [msg]
+  (.error js/console (str "Warning: " msg)))
 
 (defn- get-parent [c]
   (get-prop c "omcljs$parent"))
@@ -17,9 +20,9 @@
 
 (defn- bubble-up
   [c k args]
-  (println "bubblig up")
   (if-let [parent (get-parent c)]
-    (apply (partial dispatch* parent k) args)))
+    ((partial dispatch* parent k) args)
+    (print-warning (str "Could not find key " k " on the component tree."))))
 
 (defn- dispatch*
   [c k args]
@@ -29,8 +32,6 @@
 
 (defn dispatch
   [c k & args]
-  (println "dispatch called")
-  (println (satisfies? IDispatcher c))
   (if (satisfies? IDispatcher c)
     (dispatch* c k args)
     (bubble-up c k args)))
