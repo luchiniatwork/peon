@@ -1,12 +1,11 @@
-(defproject peon "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+(defproject luchiniatwork/peon "0.1.0"
+  :description "Idiomatic dispatch of Om Next transactions from dumb components"
+  :url "https://github.com/luchiniatwork/peon"
+  :license {:name "MIT License"
+            :url "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.854" :scope "provided"]
-
                  [org.omcljs/om "1.0.0-beta1" :scope "test"]
                  [cljsjs/react "15.5.4-0" :scope "test"]
                  [cljsjs/react-dom "15.5.4-0" :scope "test"]]
